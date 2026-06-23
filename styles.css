@@ -104,22 +104,22 @@ body {
   color: #fff8f1;
 }
 
-.eyebrow {
-  margin: 0 0 0.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.75rem;
-  color: #f6d8a4;
-  font-family: "Balladeer", "Iowan Old Style", serif;
-  font-weight: 500;
-}
-
 h1 {
   margin: 0;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size: clamp(2.15rem, 9vw, 4.1rem);
-  line-height: 1.02;
+  font-size: clamp(2.8rem, 12vw, 5.2rem);
+  line-height: 0.95;
   font-weight: 700;
+}
+
+.hero-subtitle {
+  margin: 0.25rem 0 0;
+  max-width: 15ch;
+  color: #f6d8a4;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: clamp(1.25rem, 5vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.05;
 }
 
 .event-meta {
