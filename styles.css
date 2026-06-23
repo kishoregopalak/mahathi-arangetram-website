@@ -116,9 +116,10 @@ body {
 
 h1 {
   margin: 0;
-  font-family: "Kunaroh", "Iowan Old Style", serif;
-  font-size: clamp(2.4rem, 12vw, 4.4rem);
-  line-height: 0.95;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: clamp(2.15rem, 9vw, 4.1rem);
+  line-height: 1.02;
+  font-weight: 700;
 }
 
 .event-meta {
