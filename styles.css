@@ -153,7 +153,10 @@ h1 {
 }
 
 .theme-toggle {
-  flex: 0 0 auto;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
   border: 1px solid var(--chip-border);
   background: var(--toggle-bg);
   color: var(--toggle-text);
@@ -231,8 +234,10 @@ h3 {
 }
 
 .artist-card img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  object-position: center;
+  background: #0d0a0b;
 }
 
 .meta {
