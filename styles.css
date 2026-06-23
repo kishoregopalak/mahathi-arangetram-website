@@ -8,6 +8,34 @@
   --gold: #b57d2f;
   --border: #e8d6c6;
   --shadow: 0 10px 25px rgb(0 0 0 / 0.12);
+  --nav-bg: rgb(255 250 244 / 0.95);
+  --chip-bg: #fff7ef;
+  --chip-border: #d9bfa4;
+  --hero-overlay-start: rgb(43 26 22 / 0.1);
+  --hero-overlay-mid: rgb(43 26 22 / 0.74);
+  --hero-overlay-end: rgb(43 26 22 / 0.9);
+  --toggle-bg: #2b1a16;
+  --toggle-text: #fef3e2;
+}
+
+body.dark-theme {
+  --bg: #0b0a0c;
+  --surface: #161216;
+  --text: #efe0ca;
+  --muted: #c6b29a;
+  --accent: #9a3138;
+  --accent-dark: #e7c998;
+  --gold: #d2a95f;
+  --border: #3a2b2f;
+  --shadow: 0 14px 32px rgb(0 0 0 / 0.5);
+  --nav-bg: rgb(11 10 12 / 0.92);
+  --chip-bg: #231a1d;
+  --chip-border: #5a3e47;
+  --hero-overlay-start: rgb(0 0 0 / 0.35);
+  --hero-overlay-mid: rgb(0 0 0 / 0.78);
+  --hero-overlay-end: rgb(0 0 0 / 0.94);
+  --toggle-bg: #e7c998;
+  --toggle-text: #2a1713;
 }
 
 @font-face {
@@ -63,9 +91,9 @@ body {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgb(43 26 22 / 0.1) 0%,
-    rgb(43 26 22 / 0.74) 60%,
-    rgb(43 26 22 / 0.9) 100%
+    var(--hero-overlay-start) 0%,
+    var(--hero-overlay-mid) 60%,
+    var(--hero-overlay-end) 100%
   );
 }
 
@@ -105,7 +133,7 @@ h1 {
   gap: 0.5rem;
   padding: 0.65rem 0.65rem;
   overflow-x: auto;
-  background: rgb(255 250 244 / 0.95);
+  background: var(--nav-bg);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(8px);
 }
@@ -114,13 +142,34 @@ h1 {
   flex: 0 0 auto;
   text-decoration: none;
   color: var(--accent-dark);
-  border: 1px solid #d9bfa4;
-  background: #fff7ef;
+  border: 1px solid var(--chip-border);
+  background: var(--chip-bg);
   border-radius: 999px;
   font-weight: 500;
   font-size: 0.92rem;
   padding: 0.45rem 0.9rem;
   font-family: "Balladeer", "Iowan Old Style", serif;
+}
+
+.theme-toggle {
+  flex: 0 0 auto;
+  border: 1px solid var(--chip-border);
+  background: var(--toggle-bg);
+  color: var(--toggle-text);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  padding: 0.45rem 0.9rem;
+  font-family: "Balladeer", "Iowan Old Style", serif;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  filter: brightness(1.04);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .section-nav a.active {
@@ -176,7 +225,7 @@ h3 {
   width: 100%;
   border-radius: 10px;
   display: block;
-  border: 1px solid #e2cdbb;
+  border: 1px solid var(--chip-border);
   margin: 0.5rem 0 0.7rem;
 }
 
@@ -227,6 +276,10 @@ h3 {
   border-radius: 999px;
   font-size: 0.86rem;
   box-shadow: var(--shadow);
+}
+
+body.dark-theme .section-nav a.active {
+  color: #fff6e8;
 }
 
 @media (min-width: 720px) {
