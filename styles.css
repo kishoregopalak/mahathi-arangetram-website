@@ -84,6 +84,9 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--banner-x, 50%) var(--banner-y, 74%);
+  transform: scale(var(--banner-zoom, 1));
+  transform-origin: center;
 }
 
 .hero-overlay {
@@ -393,15 +396,16 @@ body.tuning-mode .artist-grid {
 }
 
 .credits-list {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 0.9rem;
-  box-shadow: var(--shadow);
+  display: grid;
+  gap: 0.55rem;
 }
 
-.credits-list p {
-  margin: 0.45rem 0;
+.credit-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.98rem;
 }
 
 .credits-layout {
@@ -509,12 +513,6 @@ body.dark-theme .section-nav a.active {
     clear: both;
   }
 
-  .credits-layout {
-    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
-    align-items: start;
-    gap: 1.2rem;
-  }
-
   .emcee-card {
     max-width: 800px;
   }
@@ -523,6 +521,10 @@ body.dark-theme .section-nav a.active {
     float: right;
     width: min(42%, 320px);
     margin: 0 0 0.8rem 1rem;
+  }
+
+  .credits-list {
+    max-width: 560px;
   }
 
   .tuning-panel {

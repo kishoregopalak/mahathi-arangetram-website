@@ -6,8 +6,10 @@ const themeToggle = document.querySelector("#themeToggle");
 const THEME_KEY = "mahathi-theme";
 const CROP_KEY = "mahathi-image-crops-v1";
 const tunableImages = [...document.querySelectorAll(".tunable-image[data-image-id]")];
+const heroImage = document.querySelector(".hero-image");
 
 const defaultCropConfig = {
+  banner: { x: 19, y: 86, zoom: 1 },
   mallari: { x: 50, y: 71, zoom: 1.09 },
   ganesha: { x: 50, y: 88, zoom: 1.01 },
   alaripu: { x: 80, y: 50, zoom: 1 },
@@ -63,6 +65,13 @@ const applySingleCrop = (img, preset) => {
 };
 
 const applyCropConfig = (config) => {
+  const bannerPreset = config.banner || defaultCropConfig.banner || { x: 50, y: 74, zoom: 1 };
+  if (heroImage) {
+    heroImage.style.setProperty("--banner-x", `${clamp(Number(bannerPreset.x) || 50, 0, 100)}%`);
+    heroImage.style.setProperty("--banner-y", `${clamp(Number(bannerPreset.y) || 74, 0, 100)}%`);
+    heroImage.style.setProperty("--banner-zoom", `${clamp(Number(bannerPreset.zoom) || 1, 1, 2.2)}`);
+  }
+
   tunableImages.forEach((img) => {
     const id = img.dataset.imageId;
     applySingleCrop(img, config[id] || defaultCropConfig[id] || { x: 50, y: 50, zoom: 1 });
@@ -132,11 +141,7 @@ if (tuningMode && tunableImages.length) {
     output.value = JSON.stringify(runtimeCropConfig, null, 2);
   };
 
-  tunableImages.forEach((img) => {
-    const id = img.dataset.imageId;
-    const card = img.closest(".artist-card, .program-card");
-    const label = card?.querySelector("h3")?.textContent?.trim() || id;
-
+  const addTuneRow = (id, label) => {
     const row = document.createElement("div");
     row.className = "tune-row";
 
@@ -174,6 +179,15 @@ if (tuningMode && tunableImages.length) {
     makeSlider("y", "Y", 0, 100, 1);
     makeSlider("zoom", "Zoom", 1, 2.2, 0.01);
     panel.append(row);
+  };
+
+  addTuneRow("banner", "Hero Banner");
+
+  tunableImages.forEach((img) => {
+    const id = img.dataset.imageId;
+    const card = img.closest(".artist-card, .program-card");
+    const label = card?.querySelector("h3")?.textContent?.trim() || id;
+    addTuneRow(id, label);
   });
 
   const actions = document.createElement("div");
