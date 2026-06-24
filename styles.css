@@ -183,14 +183,14 @@ h1 {
 }
 
 main {
-  width: min(1020px, 100%);
+  width: min(1180px, 100%);
   margin: 0 auto;
-  padding: 0.8rem 0.8rem 4rem;
+  padding: 0.9rem 0.9rem 4.2rem;
 }
 
 .section {
   scroll-margin-top: 4rem;
-  margin-top: 1.2rem;
+  margin-top: 1.6rem;
 }
 
 h2 {
@@ -223,8 +223,11 @@ h3 {
   padding: 0.9rem;
 }
 
-.program-card img,
-.artist-card img,
+.card p,
+.program-card p {
+  line-height: 1.58;
+}
+
 .portrait {
   width: 100%;
   border-radius: 10px;
@@ -233,11 +236,141 @@ h3 {
   margin: 0.5rem 0 0.7rem;
 }
 
-.artist-card img {
+.artist-image-wrap {
+  position: relative;
+  width: 100%;
   aspect-ratio: 3 / 4;
-  object-fit: contain;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--chip-border);
+  margin: 0.5rem 0 0.7rem;
+}
+
+.program-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--chip-border);
+  margin: 0.5rem 0 0.7rem;
+}
+
+.artist-image-wrap .tunable-image,
+.program-image-wrap .tunable-image {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  object-fit: cover;
   object-position: center;
-  background: #0d0a0b;
+}
+
+body.tuning-mode {
+  padding-bottom: 16rem;
+}
+
+body.tuning-mode .program-grid,
+body.tuning-mode .artist-grid {
+  grid-template-columns: 1fr !important;
+}
+
+@media (min-width: 980px) {
+  body.tuning-mode .program-grid,
+  body.tuning-mode .artist-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.tuning-mode main {
+    width: min(760px, calc(100vw - 470px));
+    margin-left: 1rem;
+    margin-right: auto;
+  }
+
+  body.tuning-mode .section-nav {
+    width: min(760px, calc(100vw - 470px));
+    margin-left: 1rem;
+    margin-right: auto;
+    justify-content: flex-start;
+  }
+}
+
+.tuning-panel {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1000;
+  max-height: 42vh;
+  overflow: auto;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid var(--chip-border);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.tuning-panel h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.tune-row {
+  padding: 0.55rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgb(255 255 255 / 0.35);
+}
+
+.tune-row p {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+}
+
+.tune-row label {
+  display: block;
+  font-size: 0.82rem;
+  margin: 0.25rem 0;
+}
+
+.tune-row input[type="range"] {
+  width: 100%;
+}
+
+.tune-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tuning-panel button {
+  border: 1px solid var(--chip-border);
+  background: var(--chip-bg);
+  color: var(--accent-dark);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-family: "Balladeer", "Iowan Old Style", serif;
+  cursor: pointer;
+}
+
+.tuning-panel textarea {
+  width: 100%;
+  min-height: 5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.55rem;
+  font-size: 0.78rem;
+}
+
+.tuning-note {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
 }
 
 .meta {
@@ -269,6 +402,21 @@ h3 {
 
 .credits-list p {
   margin: 0.45rem 0;
+}
+
+.credits-layout {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.emcee-card {
+  margin: 0;
+}
+
+.emcee-photo {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .to-top {
@@ -303,23 +451,84 @@ body.dark-theme .section-nav a.active {
 
   .program-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 
   .artist-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 
   .section-nav {
     justify-content: center;
   }
+
+  main {
+    padding: 1.2rem 1.2rem 4.4rem;
+  }
 }
 
 @media (min-width: 1100px) {
+  .hero-content {
+    max-width: 780px;
+    padding: 2.2rem 2.4rem 2.4rem;
+  }
+
+  h1 {
+    font-size: clamp(3.4rem, 7vw, 5.4rem);
+  }
+
+  .hero-subtitle {
+    max-width: 20ch;
+    font-size: clamp(1.4rem, 2.8vw, 2.3rem);
+  }
+
   .program-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
   }
 
   .artist-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .artist-card {
+    display: block;
+  }
+
+  .artist-image-wrap {
+    float: left;
+    width: 200px;
+    margin: 0 1rem 0.75rem 0;
+  }
+
+  .artist-card::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .credits-layout {
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    align-items: start;
+    gap: 1.2rem;
+  }
+
+  .emcee-card {
+    max-width: 800px;
+  }
+
+  .emcee-card .emcee-photo {
+    float: right;
+    width: min(42%, 320px);
+    margin: 0 0 0.8rem 1rem;
+  }
+
+  .tuning-panel {
+    left: auto;
+    right: 1rem;
+    width: min(430px, calc(100vw - 2rem));
+    max-height: calc(100vh - 2rem);
   }
 }
