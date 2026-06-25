@@ -2,64 +2,64 @@
 
 Single-page, mobile-first brochure website for Mahathi's Bharatanatyam Arangetram.
 
-Live site (GitHub Pages):
-- https://kishoregopalak.github.io/mahathi-arangetram-website/
-
-Repository:
-- https://github.com/kishoregopalak/mahathi-arangetram-website
+**Live:** [mahathikishore.com](https://mahathikishore.com)  
+**Repo:** [github.com/kishoregopalak/mahathi-arangetram-website](https://github.com/kishoregopalak/mahathi-arangetram-website)
 
 ## Purpose
 
-This site mirrors the printed brochure so it can be shared via QR code during the event when printed copies run out.
+Mirrors the printed brochure for sharing via QR code when printed copies run out. Includes an optional **meme mode** with cake overlays on pose photos.
 
-## Current Structure
+## Structure
 
-- `index.html` - page markup and brochure content
-- `styles.css` - layout, typography, color themes, dark mode styles
-- `script.js` - section highlight logic + dark mode persistence
-- `assets/` - all images referenced by the site
-- `fonts/` - bundled custom fonts used by the site
+```
+hosting/
+├── index.html          # Main brochure page
+├── styles.css          # Layout, themes, typography
+├── script.js           # Nav, dark mode, image crop tuning
+├── assets/             # Live site images (*-original.*)
+├── fonts/              # Balladeer, Kunaroh
+├── meme/               # Meme mode (/meme/)
+│   ├── index.html
+│   ├── tune.html       # → index.html?tune=1
+│   ├── meme.js
+│   ├── meme.css
+│   └── cake-vectors/   # cake-01.png … cake-13.png
+└── deliverables/       # Print/QR assets (not linked from site)
+    ├── brochure.pdf
+    └── qr/
+        ├── qr-code.png
+        └── qr-logo.psd
+```
 
-## Content Source Rules
+Archived design sources live outside this repo in `../archive/` and `../design/`.
 
-- Text content is based on `Mahathi2Pages 17x11v9.pdf`.
-- Keep brochure wording exact when possible.
-- Web-only cleanup is allowed only for PDF extraction artifacts (line-break hyphenation, spacing, punctuation normalization).
-
-## Typography Rules
-
-- Default body text: `Iowan Old Style` (with serif fallbacks).
-- `Kunaroh`: use sparingly for the main hero title only.
-- `Balladeer`: use sparingly for accent UI (eyebrow, nav pills, select metadata labels).
-
-## Theme Rules
-
-- Light mode follows warm brochure tones.
-- Dark mode is enabled via toggle and uses black/maroon/gold palette inspired by brochure aesthetics.
-- Theme choice persists in `localStorage` key `mahathi-theme`.
-
-## Local Development
-
-From repo root:
+## Local development
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Open:
-- http://localhost:8080/
+| URL | Page |
+|-----|------|
+| http://localhost:8080/ | Main site |
+| http://localhost:8080/?tune=1 | Image crop tuning |
+| http://localhost:8080/meme/ | Meme mode (cake overlays) |
+| http://localhost:8080/meme/?tune=1 | Cake position tuning |
+
+## Content rules
+
+- Text from `design/exports/Mahathi2Pages 17x11v9.pdf` (parent workspace).
+- Keep brochure wording exact; only fix PDF line-break artifacts.
+- **Body:** Iowan Old Style · **Hero title:** Kunaroh · **Accent/nav:** Balladeer
+
+## Configuration keys
+
+| Key | Purpose |
+|-----|---------|
+| `mahathi-theme` | Light/dark mode |
+| `mahathi-image-crops-v1` | Main site image crops |
+| `mahathi-meme-cake-v1` | Meme mode cake positions |
 
 ## Deployment
 
-GitHub Pages is configured from:
-- Branch: `main`
-- Path: `/` (root)
-
-Push to `main` to deploy updates.
-
-## Notes for Future Edits
-
-- Keep the site self-contained (do not depend on files outside this repo).
-- Add any new images to `assets/` and new fonts to `fonts/`.
-- Use relative paths from `index.html`/`styles.css`.
-- Prefer mobile-first layout decisions; desktop enhancements should be secondary.
+Push to `main` → GitHub Pages (root `/`). Custom domain via `CNAME`.
