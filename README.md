@@ -7,23 +7,16 @@ Single-page, mobile-first brochure website for Mahathi's Bharatanatyam Arangetra
 
 ## Purpose
 
-Mirrors the printed brochure for sharing via QR code when printed copies run out. Includes an optional **meme mode** with cake overlays on pose photos.
+Mirrors the printed brochure for sharing via QR code when printed copies run out.
 
 ## Structure
 
 ```
-hosting/
 ├── index.html          # Main brochure page
 ├── styles.css          # Layout, themes, typography
 ├── script.js           # Nav, dark mode, image crop tuning
 ├── assets/             # Live site images (*-original.*)
 ├── fonts/              # Balladeer, Kunaroh
-├── meme/               # Meme mode (/meme/)
-│   ├── index.html
-│   ├── tune.html       # → index.html?tune=1
-│   ├── meme.js
-│   ├── meme.css
-│   └── cake-vectors/   # cake-01.png … cake-13.png
 └── deliverables/       # Print/QR assets (not linked from site)
     ├── brochure.pdf
     └── qr/
@@ -43,8 +36,6 @@ python3 -m http.server 8080
 |-----|------|
 | http://localhost:8080/ | Main site |
 | http://localhost:8080/?tune=1 | Image crop tuning |
-| http://localhost:8080/meme/ | Meme mode (cake overlays) |
-| http://localhost:8080/meme/?tune=1 | Cake position tuning |
 
 ## Content rules
 
@@ -58,8 +49,9 @@ python3 -m http.server 8080
 |-----|---------|
 | `mahathi-theme` | Light/dark mode |
 | `mahathi-image-crops-v1` | Main site image crops |
-| `mahathi-meme-cake-v1` | Meme mode cake positions |
 
 ## Deployment
 
 Push to `main` → GitHub Pages (root `/`). Custom domain via `CNAME`.
+
+Meme mode experiments live on the `meme` branch (not deployed).

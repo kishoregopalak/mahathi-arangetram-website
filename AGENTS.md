@@ -13,7 +13,7 @@ Parent workspace (`../`) holds design sources, event photos, and archives — no
 ## Constraints
 
 1. Mobile-first layout.
-2. Runtime assets only in `assets/`, `fonts/`, `meme/cake-vectors/`.
+2. Runtime assets only in `assets/` and `fonts/`.
 3. Do not summarize brochure copy unless asked.
 4. **Fonts:** Iowan Old Style (body) · Kunaroh (hero title only) · Balladeer (accent/nav sparingly).
 5. Dark mode via `#themeToggle`; persists in `localStorage` key `mahathi-theme`.
@@ -25,16 +25,16 @@ Parent workspace (`../`) holds design sources, event photos, and archives — no
 | `index.html` | Sections, program order, images |
 | `styles.css` | Themes, layout, typography |
 | `script.js` | Nav highlight, theme toggle, image crop tuning (`?tune=1`) |
-| `meme/meme.js` | Meme mode: loads main page, cake overlays (`MEME_EMOJIS_ENABLED` flag) |
 | `deliverables/` | Brochure PDF + QR artwork (not served by default) |
 
 ## Before shipping
 
 1. Verify all asset paths resolve.
 2. Test light and dark themes on mobile.
-3. Check `?tune=1` and `/meme/` if those areas changed.
+3. Check `?tune=1` if image crops changed.
 
 ## Git
 
-- Commit focused changes; push `main` for Pages deploy.
+- `main` deploys to GitHub Pages.
+- Meme mode work is on the `meme` branch only.
 - Ignore `.DS_Store` (see `.gitignore`).
