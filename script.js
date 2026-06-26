@@ -10,6 +10,8 @@ const heroImage = document.querySelector(".hero-image");
 
 const defaultCropConfig = {
   banner: { x: 19, y: 86, zoom: 1 },
+  front: { x: 50, y: 52, zoom: 1 },
+  teacher: { x: 71, y: 100, zoom: 1.07 },
   mallari: { x: 50, y: 71, zoom: 1.09 },
   ganesha: { x: 50, y: 88, zoom: 1.01 },
   alaripu: { x: 80, y: 50, zoom: 1 },
